@@ -1,0 +1,15 @@
+
+spring:
+  application:
+    name: apm-test-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: apm-test-service1
+          uri: http://127.0.0.1:8081
+          filters:
+            - StripPrefix=2
+          predicates:
+            - Path=/api/v1/test-service1
+server:
+  port: 8080
